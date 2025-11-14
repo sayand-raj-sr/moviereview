@@ -159,8 +159,8 @@ function Editmovies() {
             <button type="submit" className="w-full py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">
              <Link to={'/allmovies'}>Save Changes</Link> 
             </button>
-            <button type="reset" className="w-full py-2 px-4 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"onClick={() => setMovie(movie)} >
-              Reset
+            <button type="reset" className="w-full py-2 px-4 bg-gray-300 text-black rounded-md hover:bg-green-500"onClick={() => setMovie(movie)} >
+              <Link to={'/allmovies'}>Back</Link>
             </button>
           </div>
         </form>

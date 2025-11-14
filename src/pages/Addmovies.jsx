@@ -103,8 +103,8 @@ function Addmovies() {
               <button  type="submit" className="w-full py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
               Add Movie
               </button>
-              <button  type="reset" className="w-full py-2 px-4 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400">
-                Reset
+              <button  type="reset" className="w-full py-2 px-4 bg-gray-300 text-black rounded-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-gray-400">
+               <Link to={'/allmovies'}>Back</Link> 
               </button>
             </div>
           </form>
