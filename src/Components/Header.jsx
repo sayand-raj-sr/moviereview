@@ -125,13 +125,6 @@ function Header() {
             {/* User Menu (Mobile) */}
             <div className="flex flex-col items-center gap-2 mt-2">
               <FaUserCircle className="text-4xl" />
-              <Link
-                to="/profile"
-                className="hover:text-red-500"
-                onClick={() => setOpen(false)}
-              >
-                Profile
-              </Link>
               <button
                 onClick={() => {
                   handleLogout();

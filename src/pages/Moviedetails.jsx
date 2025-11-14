@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { db } from '../store/firebase';
 import {addDoc,collection,deleteDoc,doc,getDoc,onSnapshot,query,setDoc,where} from 'firebase/firestore';
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -100,7 +100,9 @@ function Moviedetails() {
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-12">
       {/* Movie Info */}
       <div className="flex flex-col md:flex-row items-center gap-8 py-4">
+        <Link to={'/allmovies'}>
 <IoIosArrowRoundBack className=" flex mr-4 text-5xl transition-transform duration-300 hover:scale-110 hover:text-blue-600" />
+       </Link>
         <img
           src={movie.poster}
           alt={movie.title}
