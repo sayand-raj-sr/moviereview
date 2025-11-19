@@ -167,15 +167,15 @@ function Moviedetails() {
       </div>
 
       {/* Reviews List */}
-      <div className="space-y-4">
+      <div className="space-y-4  text-black">
         {reviews.length === 0 ? (
           <p>No reviews yet. Be the first!</p>
         ) : (
           reviews.map((rev) => (
-            <div key={rev.id} className="p-4 bg-gray-100 rounded-lg shadow-sm">
+            <div key={rev.id} className="p-4 bg-gray-100 rounded-lg shadow-sm  text-black">
               <p>{rev.text}</p>
               {rev.createdAt?.toDate && (
-                <p className="text-sm text-gray-400 mt-1">
+                <p className="text-sm text-gray-400 mt-1 text-black">
                   {rev.createdAt.toDate().toLocaleString()}
                 </p>
               )}
