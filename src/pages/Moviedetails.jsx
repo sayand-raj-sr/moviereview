@@ -155,7 +155,7 @@ function Moviedetails() {
             value={newReview}
             onChange={(e) => setNewReview(e.target.value)}
             placeholder="Write your review..."
-            className="flex-1 h-10 rounded px-4 border"
+            className="flex-1 text-gray-500 h-10 rounded px-4 border border-green-500"
           />
           <button
             onClick={handleAddReview}

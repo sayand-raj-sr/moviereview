@@ -60,7 +60,7 @@ function Editmovies() {
     <Homeheader/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-[url(https://wallpaperaccess.com/full/3658607.jpg)] bg-cover">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <h1 className="text-2xl font-bold mb-6 text-center">Edit Movie Details</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Edit Movie Details</h1>
         <form className="space-y-4" onSubmit={submitForm}>
           {/* Title */}
           <div className="form-group">
@@ -108,7 +108,7 @@ function Editmovies() {
               max="10"
               value={movie.rating}
               onChange={handleChange}
-              className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full border px-4 py-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
@@ -120,7 +120,7 @@ function Editmovies() {
               value={movie.review}
               onChange={handleChange}
               rows="4"
-              className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full border px-4 text-black py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
@@ -132,26 +132,26 @@ function Editmovies() {
               name="actors"
               value={movie.actors}
               onChange={handleChange}
-              className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full border px-4 py-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
           {/* Director */}
           <div className="form-group">
             <label className="block text-gray-700 mb-1">Director</label>
-            <input type="text" name="directorname"value={movie.directorname} onChange={handleChange}className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            <input type="text" name="directorname"value={movie.directorname} onChange={handleChange}className="w-full border px-4 py-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
           </div>
 
           {/* Age Restriction */}
           <div className="form-group">
             <label className="block text-gray-700 mb-1">Age Restriction</label>
-            <input type="text"name="agerestriction" value={movie.agerestriction}onChange={handleChange}className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            <input type="text"name="agerestriction" value={movie.agerestriction}onChange={handleChange}className="w-full text-black border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
           </div>
 
           {/* Poster */}
           <div className="form-group">
             <label className="block text-gray-700 mb-1">Poster URL</label>
-            <input type="text" name="poster" value={movie.poster}onChange={handleChange}className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            <input type="text" name="poster" value={movie.poster}onChange={handleChange}className="w-full text-black border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"/>
           </div>
 
           {/* Buttons */}
