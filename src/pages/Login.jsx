@@ -14,6 +14,8 @@ function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
+      setEmail("")
+      setPassword("")
       navigate('/allmovies');
     } catch (err) {
       if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
@@ -42,14 +44,14 @@ function Login() {
         <div className="mb-5">
           <label className="text-gray-300 block mb-2 text-sm font-medium">Email</label>
           <input type="email" placeholder="Enter your email"className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
-            value={email} onChange={(e) => setEmail(e.target.value)}/>
+            value={email||""} onChange={(e) => setEmail(e.target.value)}/>
         </div>
 
        
         <div className="mb-6">
           <label className="text-gray-300 block mb-2 text-sm font-medium">Password</label>
           <input type="password" placeholder="Enter your password" className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
-            value={password} onChange={(e) => setPassword(e.target.value)}/>
+            value={password||""} onChange={(e) => setPassword(e.target.value)}/>
         </div>
 
         
