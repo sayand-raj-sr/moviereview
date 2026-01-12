@@ -11,64 +11,82 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      alert('Please enter both email and password');
+      return;
+    }
+
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login successful');
-      setEmail("")
-      setPassword("")
-      navigate('/allmovies');
+      // Use await to ensure proper handling of the promise
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log('Login successful', userCredential.user);  // For debugging
+      navigate('/allmovies');  // Redirect to the desired page
     } catch (err) {
-      if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
-        alert('Invalid email or password. Please try again.');
-        setEmail('');
-        setPassword('');
+      console.error(err.code, err.message);  // Log the error for debugging
+
+      // Show appropriate error messages based on the error code
+      if (err.code === 'auth/invalid-email') {
+        alert('Invalid email format. Please enter a valid email.');
+      } else if (err.code === 'auth/user-not-found') {
+        alert('No user found with this email address.');
+      } else if (err.code === 'auth/wrong-password') {
+        alert('Incorrect password. Please try again.');
       } else {
         alert('An error occurred. Please try again later.');
       }
-      console.log(err);
     }
   };
 
   return (
-    <>
-      <Homeheader/>
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 bg-[url(https://wallpapercave.com/wp/wp1945939.jpg)] bg-cover">
-    
-      <div className="bg-gray-900 backdrop-blur-md p-10 rounded-2xl w-96 shadow-2xl border border-gray-700">
-        
-        
-        <h2 className="text-4xl font-bold text-center text-white mb-6 tracking-wide">Welcome Back</h2>
-        <p className="text-center text-gray-400 mb-8 text-sm"> Login to continue your movie journey </p>
+    <div>
+      <Homeheader />
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 bg-[url(https://wallpapercave.com/wp/wp1945939.jpg)] bg-cover">
+        <div className="bg-gray-900 backdrop-blur-md p-10 rounded-2xl w-96 shadow-2xl border border-gray-700">
+          <h2 className="text-4xl font-bold text-center text-white mb-6 tracking-wide">Welcome Back</h2>
+          <p className="text-center text-gray-400 mb-8 text-sm">Login to continue your movie journey</p>
 
-       
-        <div className="mb-5">
-          <label className="text-gray-300 block mb-2 text-sm font-medium">Email</label>
-          <input type="email" placeholder="Enter your email"className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
-            value={email||""} onChange={(e) => setEmail(e.target.value)}/>
+          {/* Form */}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-5">
+              <label className="text-gray-300 block mb-2 text-sm font-medium">Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
+                value={email || ""}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="text-gray-300 block mb-2 text-sm font-medium">Password</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
+                value={password || ""}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold tracking-wide transition duration-300 shadow-md hover:shadow-red-700/40"
+            >
+              Login
+            </button>
+          </form>
+
+          <p className="text-center text-gray-400 mt-6 text-sm">
+            Don’t have an account?
+            <a href="/register" className="text-red-500 font-medium hover:underline hover:text-red-400 transition">
+              Register
+            </a>
+          </p>
         </div>
-
-       
-        <div className="mb-6">
-          <label className="text-gray-300 block mb-2 text-sm font-medium">Password</label>
-          <input type="password" placeholder="Enter your password" className="w-full p-3 rounded-lg bg-gray-800/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition"
-            value={password||""} onChange={(e) => setPassword(e.target.value)}/>
-        </div>
-
-        
-        <button onClick={handleSubmit} className="w-full py-3 rounded-lg bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold tracking-wide transition duration-300 shadow-md hover:shadow-red-700/40" >Login
-        </button>
-
-        
-        <p className="text-center text-gray-400 mt-6 text-sm">
-          Don’t have an account?
-          <a href="/register"  className="text-red-500 font-medium hover:underline hover:text-red-400 transition">
-            Register
-          </a>
-        </p>
-      
       </div>
     </div>
-    </>
   );
 }
 
